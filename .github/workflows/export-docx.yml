@@ -1,0 +1,28 @@
+name: Export zvernennya to DOCX
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+  workflow_dispatch:
+
+jobs:
+  export-docx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Convert README.md to DOCX
+        run: pandoc README.md -o zvernennya.docx --metadata title="Колективне звернення до команди СвітлоБот"
+
+      - name: Upload DOCX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: zvernennya-docx
+          path: zvernennya.docx
+          retention-days: 90
