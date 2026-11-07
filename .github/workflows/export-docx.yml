@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'README.md'
+      - 'zvernennya.md'
+      - 'template.docx'
   workflow_dispatch:
 
 jobs:
@@ -17,8 +18,13 @@ jobs:
       - name: Install pandoc
         run: sudo apt-get update && sudo apt-get install -y pandoc
 
-      - name: Convert README.md to DOCX
-        run: pandoc README.md -o zvernennya.docx --metadata title="Колективне звернення до команди СвітлоБот"
+      - name: Convert zvernennya.md to DOCX
+        run: |
+          if [ -f template.docx ]; then
+            pandoc zvernennya.md -o zvernennya.docx --reference-doc=template.docx
+          else
+            pandoc zvernennya.md -o zvernennya.docx
+          fi
 
       - name: Upload DOCX artifact
         uses: actions/upload-artifact@v4

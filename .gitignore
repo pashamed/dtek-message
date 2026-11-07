@@ -2,3 +2,5 @@
 zvernennya.docx
 *.docx
 *.odt
+# Шаблон стилів Word — єдиний docx, який живе в репозиторії
+!template.docx
