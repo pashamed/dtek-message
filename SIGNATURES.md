@@ -4,4 +4,4 @@
 
 | № | Імʼя / нік | Контакт (опційно) | Дата |
 |---|------------|-------------------|------|
-| 1 |Pavlo medenets |https://github.com/pashamed | |
+| 1 |Pavlo |https://github.com/pashamed | |
